@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 28, 2020 at 02:32 PM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Generation Time: Sep 28, 2020 at 02:53 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,18 +35,12 @@ CREATE TABLE IF NOT EXISTS `advertisements` (
   `author` int(11) NOT NULL,
   `content` text NOT NULL,
   `company` int(11) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
   `createdAt` int(11) NOT NULL,
   `beginsAt` int(11) NOT NULL,
   `expiresAt` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `advertisements`
---
-
-INSERT INTO `advertisements` (`id`, `title`, `author`, `content`, `company`, `createdAt`, `beginsAt`, `expiresAt`) VALUES
-(2, 'Job de ouf', 1, 'Content de lannonce du job de ouf', 45, 28092020, 30092020, 15102020);
 
 -- --------------------------------------------------------
 
@@ -57,18 +52,14 @@ DROP TABLE IF EXISTS `application`;
 CREATE TABLE IF NOT EXISTS `application` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `candidate_id` int(11) NOT NULL,
+  `candidate_last` varchar(255) NOT NULL,
+  `candidate_first` varchar(255) NOT NULL,
   `contact_id` int(11) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
   `company_id` int(11) NOT NULL,
   `advertisement_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `application`
---
-
-INSERT INTO `application` (`id`, `candidate_id`, `contact_id`, `company_id`, `advertisement_id`) VALUES
-(1, 2, 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -86,13 +77,6 @@ CREATE TABLE IF NOT EXISTS `companies` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `companies`
---
-
-INSERT INTO `companies` (`id`, `name`, `city`, `country`, `description`) VALUES
-(1, 'Tribu', 'Ici', 'Dans le coin', 'La tribu d\'ici');
-
 -- --------------------------------------------------------
 
 --
@@ -103,6 +87,7 @@ DROP TABLE IF EXISTS `people`;
 CREATE TABLE IF NOT EXISTS `people` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(255) NOT NULL,
+  `company_name` varchar(255) NOT NULL,
   `company_id` int(11) NOT NULL,
   `applying` tinyint(1) NOT NULL,
   `lastName` varchar(255) NOT NULL,
