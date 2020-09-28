@@ -3,7 +3,7 @@ $(document).ready(function() {
         url: "http://localhost:3000/ad/",
         type: "GET",
         success: function(data) {
-            $("#ladescription").html(JSON.parse(data)[0].content)
+            displayAds(JSON.parse(data));
         }
     })
 })
