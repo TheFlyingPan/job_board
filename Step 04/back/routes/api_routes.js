@@ -30,6 +30,15 @@ app.post('/createAd/', (req, res) => {
     })
 })
 
+app.delete('/ad/:id', (req, res) => {
+    var sql = "DELETE FROM advertisements WHERE id=" + req.body.id;
+    con.query(sql, function(err, result) {
+        if (err) throw err;
+        res.setHeader("Access-Control-Allow-Origin", "*")
+        res.send(JSON.stringify(result));
+    });
+})
+
 //Companies
 
 app.get('/companies/', (req, res) => {
