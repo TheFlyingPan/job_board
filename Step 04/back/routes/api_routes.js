@@ -48,6 +48,15 @@ app.get('/company/:id', (req, res) => {
     });
 })
 
+app.post('/createCompany/', (req, res) => {
+    var sql = "INSERT INTO companies (name, city, country, description) VALUES ('TribuCorp', 'Toulouse', 'France', 'Description de TribuCorp')";
+    con.query(sql, function(err, result) {
+        if (err) throw err;
+        res.setHeader("Access-Control-Allow-Origin", "*")
+        res.send(JSON.stringify({"message": "Company created"}));
+    })
+})
+
 //Applications
 
 app.get('/applications/', (req, res) => {
@@ -66,6 +75,15 @@ app.get('/application/:id', (req, res) => {
         res.setHeader("Access-Control-Allow-Origin", "*")
         res.send(JSON.stringify(result));
     });
+})
+
+app.post('/createApp/', (req, res) => {
+    var sql = "INSERT INTO application (candidate_id, contact_id, company_id, advertisement_id) VALUES ('1', '2', '3', '4')";
+    con.query(sql, function(err, result) {
+        if (err) throw err;
+        res.setHeader("Access-Control-Allow-Origin", "*")
+        res.send(JSON.stringify({"message": "Company created"}));
+    })
 })
 
 //People
