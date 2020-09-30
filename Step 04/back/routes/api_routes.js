@@ -1,4 +1,6 @@
 module.exports = function (app, con){
+
+    
     //Advertisements
 
 app.get('/ad/', (req, res) => {
@@ -11,7 +13,7 @@ app.get('/ad/', (req, res) => {
 })
 
 app.get('/ad/:id', (req, res) => {
-    var sql = "SELECT * FROM advertisements WHERE id=" + req.params.id;
+    var sql = "SELECT * FROM advertisements WHERE id=" + req.body.id;
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -20,7 +22,7 @@ app.get('/ad/:id', (req, res) => {
 })
 
 app.post('/createAd/', (req, res) => {
-    var sql = "INSERT INTO advertisements (title, author, content, company, createdAt, beginsAt, expiresAt) VALUES ('Job de ouf', '1', 'Content de lannonce du job de ouf', '45', '28092020', '30092020', '15102020')";
+    var sql = "INSERT INTO advertisements (title, author, content, company, company_name, createdAt, beginsAt, expiresAt) VALUES ('" + req.body.title + "', '" + req.body.author + "', '" + req.body.content + "', '" + req.body.company + "', '"+ req.body.company_name +"','"+ req.body.createdAt + "', '"+ req.body.beginsAt +"', '"+ req.body.expiresAt +"')";
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -40,7 +42,7 @@ app.get('/companies/', (req, res) => {
 })
 
 app.get('/company/:id', (req, res) => {
-    var sql = "SELECT * FROM companies WHERE id=" + req.params.id;
+    var sql = "SELECT * FROM companies WHERE id=" + req.body.id;
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -49,7 +51,7 @@ app.get('/company/:id', (req, res) => {
 })
 
 app.post('/createCompany/', (req, res) => {
-    var sql = "INSERT INTO companies (name, city, country, description) VALUES ('TribuCorp', 'Toulouse', 'France', 'Description de TribuCorp')";
+    var sql = "INSERT INTO companies (name, city, country, description) VALUES ('"+ req.body.name +"','"+ req.body.city +"', '"+ req.body.country +"', '"+ req.body.description + "')";
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -69,7 +71,7 @@ app.get('/applications/', (req, res) => {
 })
 
 app.get('/application/:id', (req, res) => {
-    var sql = "SELECT * FROM application WHERE id=" + req.params.id;
+    var sql = "SELECT * FROM application WHERE id=" + req.body.id;
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -78,11 +80,11 @@ app.get('/application/:id', (req, res) => {
 })
 
 app.post('/createApp/', (req, res) => {
-    var sql = "INSERT INTO application (candidate_id, contact_id, company_id, advertisement_id) VALUES ('1', '2', '3', '4')";
+    var sql = "INSERT INTO application (candidate_id, candidate_last, candidate_first, contact_id, company_name, company_id, advertisement_id) VALUES ('"+ req.body.candidate_id +"','"+ req.body.candidate_last +"','"+ req.body.candidate_first +"','"+ req.body.contact_id +"','"+ req.body.company_name +"', '"+ req.body.company_id +"','"+ req.body.advertisement_id +"')";
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
-        res.send(JSON.stringify({"message": "Company created"}));
+        res.send(JSON.stringify({"message": "Application created"}));
     })
 })
 
@@ -98,7 +100,7 @@ app.get('/people/', (req, res) => {
 })
 
 app.get('/people/:id', (req, res) => {
-    var sql = "SELECT * FROM people WHERE id=" + req.params.id;
+    var sql = "SELECT * FROM people WHERE id=" + req.body.id;
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -107,7 +109,7 @@ app.get('/people/:id', (req, res) => {
 })
 
 app.post('/createPerson/', (req, res) => {
-    var sql = "INSERT INTO people (firstName, company_id, applying, lastName) VALUES ('Philippe', '8', '66', 'Poutou')";
+    var sql = "INSERT INTO people (firstName, company_name, company_id, applying, lastName) VALUES ('"+ req.body.firstName +"','"+ req.body.company_name +"','"+ req.body.company_id +"','"+ req.body.applying +"','"+ req.body.lastName +"')";
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
