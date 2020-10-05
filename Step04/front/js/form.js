@@ -5,7 +5,7 @@ $(document).ready(function () {
             "candidate_last": $('input#lastName').val(),
             "email": $('input#email').val(),
             "phone": $('input#phone').val(),
-            "message": $('input#message').val(),
+            "message": $('textarea#message').val(),
             "candidate_id": 0,
             "ad_id": $('input#ad_id').val(),
         }
