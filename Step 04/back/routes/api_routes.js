@@ -30,8 +30,8 @@ app.post('/createAd/', (req, res) => {
     })
 })
 
-app.delete('/ad/:id', (req, res) => {
-    var sql = "DELETE FROM advertisements WHERE id=" + req.body.id;
+app.delete('/deleteAd/:id', (req, res) => {
+    var sql = "DELETE * FROM advertisements WHERE id=" + req.body.id;
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")
@@ -39,6 +39,14 @@ app.delete('/ad/:id', (req, res) => {
     });
 })
 
+app.update('/updateAd/:id', (req, res) => {
+    var sql = "UPDATE " + req.body.name +  " SET" + req.param;
+    con.query(sql, function(err, result) {
+        if (err) throw err;
+        res.setHeader("Access-Control-Allow-Origin", "*")
+        res.send(JSON.stringify(result));
+    });
+})
 //Companies
 
 app.get('/companies/', (req, res) => {
