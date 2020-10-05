@@ -15,7 +15,7 @@ var con = mysql.createConnection({
     user: "root",
     password: "",
     database: "job_board",
-    // si erreur de connection base de donnée décommenter cette ligne
+    // si erreur deq connection base de donnée décommenter cette ligne
     // port: "3307"
 });
 
