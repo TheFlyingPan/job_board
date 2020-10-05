@@ -30,6 +30,26 @@ app.post('/createAd/', (req, res) => {
     })
 })
 
+<<<<<<< HEAD:Step 04/back/routes/api_routes.js
+app.delete('/deleteAd/:id', (req, res) => {
+    var sql = "DELETE * FROM advertisements WHERE id=" + req.body.id;
+    con.query(sql, function(err, result) {
+        if (err) throw err;
+        res.setHeader("Access-Control-Allow-Origin", "*")
+        res.send(JSON.stringify(result));
+    });
+})
+
+app.update('/updateAd/:id', (req, res) => {
+    var sql = "UPDATE " + req.body.name +  " SET" + req.param;
+    con.query(sql, function(err, result) {
+        if (err) throw err;
+        res.setHeader("Access-Control-Allow-Origin", "*")
+        res.send(JSON.stringify(result));
+    });
+})
+=======
+>>>>>>> bc7a88161b1ce74c8730f28ec6ce84d995357230:Step04/back/routes/api_routes.js
 //Companies
 
 app.get('/companies/', (req, res) => {
