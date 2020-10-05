@@ -30,6 +30,7 @@ app.post('/createAd/', (req, res) => {
     })
 })
 
+<<<<<<< HEAD:Step 04/back/routes/api_routes.js
 app.delete('/deleteAd/:id', (req, res) => {
     var sql = "DELETE * FROM advertisements WHERE id=" + req.body.id;
     con.query(sql, function(err, result) {
@@ -47,6 +48,8 @@ app.update('/updateAd/:id', (req, res) => {
         res.send(JSON.stringify(result));
     });
 })
+=======
+>>>>>>> bc7a88161b1ce74c8730f28ec6ce84d995357230:Step04/back/routes/api_routes.js
 //Companies
 
 app.get('/companies/', (req, res) => {
@@ -97,9 +100,10 @@ app.get('/application/:id', (req, res) => {
 })
 
 app.post('/createApp/', (req, res) => {
-    var sql = "INSERT INTO application (candidate_id, candidate_last, candidate_first, contact_id, company_name, company_id, advertisement_id) VALUES ('"+ req.body.candidate_id +"','"+ req.body.candidate_last +"','"+ req.body.candidate_first +"','"+ req.body.contact_id +"','"+ req.body.company_name +"', '"+ req.body.company_id +"','"+ req.body.advertisement_id +"')";
+    var sql = "INSERT INTO application (candidate_id, candidate_last, candidate_first, contact_email, contact_phone, advertisement_id, message) VALUES ('"+ req.body.candidate_id +"','"+ req.body.candidate_last +"','"+ req.body.candidate_first +"','"+ req.body.email +"','"+ req.body.phone +"', '"+ req.body.ad_id +"','"+ req.body.message +"')";
     con.query(sql, function(err, result) {
         if (err) throw err;
+        console.log(req.body);
         res.setHeader("Access-Control-Allow-Origin", "*")
         res.send(JSON.stringify({"message": "Application created"}));
     })
