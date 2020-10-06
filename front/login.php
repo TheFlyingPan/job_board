@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="./running.png" />
+    <link rel="icon" type="image/png" href="./img/running.png" />
     <title>JobBoard</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="./style.css">
+    <script src="./js/login.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -33,8 +33,30 @@
         </div>
     </nav>
     <main>
-        <form>
+        <form class="ml-4 mr-4 mt-3">
             <fieldset>
+                <div class="form-group">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                </div>
+                <fieldset class="form-group" id="">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="looking" checked="">
+                            I'm looking for a job
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="recruiter">
+                            I'm an employer looking for new profiles
+                        </label>
+                    </div>
+                </fieldset>
                 <div class="form-group">
                     <label for="email-input">Email address</label>
                     <input type="email" class="form-control" id="email-input" placeholder="Enter your email">
@@ -48,6 +70,7 @@
             </fieldset>
         </form>
     </main>
+    <button id="testbtn">bonsoir</button>
 </body>
 
 </html>
