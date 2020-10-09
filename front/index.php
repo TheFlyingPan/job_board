@@ -18,6 +18,12 @@
 </head>
 
 <body>
+    <?php
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $_COOKIE['session_id'] = $id;
+    }
+    ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="./index.php">JobBoard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"

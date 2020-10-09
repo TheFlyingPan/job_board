@@ -108,8 +108,8 @@ app.get('/people/', (req, res) => {
     });
 })
 
-app.get('/people/:id', (req, res) => {
-    var sql = "SELECT * FROM people WHERE id=" + req.body.id;
+app.post('/people/', (req, res) => {
+    var sql = "SELECT * FROM people WHERE candidate_id='" + req.body.uid + "'";
     con.query(sql, function(err, result) {
         if (err) throw err;
         res.setHeader("Access-Control-Allow-Origin", "*")

@@ -22,7 +22,7 @@ module.exports = function (app, con, bcrypt, faker) {
                 bcrypt.genSalt(saltRounds, function (err, salt) {
                     bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
                         // Store hash in your password DB.
-                        var sql = "INSERT INTO people (firstName, company_name, company_id, applying, lastName, email, password) VALUES ('" + req.body.firstName + "','" + req.body.company_name + "','" + company_id + "', " + applying + ",'" + req.body.lastName + "', '" + email + "', '" + hash + "')";
+                        var sql = "INSERT INTO people (candidate_id, firstName, company_name, company_id, applying, lastName, email, password) VALUES ('" + faker.random.uuid() + "', '" + req.body.firstName + "','" + req.body.company_name + "','" + company_id + "', " + applying + ",'" + req.body.lastName + "', '" + email + "', '" + hash + "')";
                         con.query(sql, function (err, result) {
                             if (err) throw err;
                             var uuid = faker.random.uuid();
@@ -47,14 +47,18 @@ module.exports = function (app, con, bcrypt, faker) {
         con.query(sql, function (err, result) {
             if (err) throw err;
             console.log(result)
-            bcrypt.compare(pass, user.password, function(err, res) {
-                if (res) {
+            bcrypt.compare(pass, result[0].password, function(err, isMatch) {
+                console.log(err)
+                console.log(isMatch)
+                if (isMatch) {
                   // Send JWT
                   res.setHeader("Access-Control-Allow-Origin", "*")
-                  res.send(JSON.stringify({ "message": "Login successful", "id": "dkjsk" }));
+                  res.send(JSON.stringify({ "message": "Login successful", "id": result[0].candidate_id }));
                 } else {
                   // response is OutgoingMessage object that server response http request
-                  return response.json({success: false, message: 'passwords do not match'});
+                  res.setHeader("Access-Control-Allow-Origin", "*")
+                  res.statusCode = 401
+                  res.send(JSON.stringify({ "message": "Nul", "id": "dkjsk" }));
                 }
               });
         })

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 06, 2020 at 08:18 PM
+-- Generation Time: Oct 09, 2020 at 10:10 AM
 -- Server version: 10.5.4-MariaDB
 -- PHP Version: 7.3.21
 
@@ -76,15 +76,6 @@ CREATE TABLE IF NOT EXISTS `application` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `application`
---
-
-INSERT INTO `application` (`id`, `candidate_id`, `candidate_last`, `candidate_first`, `advertisement_id`, `contact_email`, `contact_phone`, `message`) VALUES
-(20, 0, 'zde', 'dz', 38, 'dzed', 'zed', 'zedzdz'),
-(19, 0, 'fbgfbg', 'fbgfbg', 38, 'fbgfbg', 'fbgfbg', 'bgffbg'),
-(18, 0, 'df', 'fd', 38, 'df', 'dfdfdf', 'dfdfdfd');
-
 -- --------------------------------------------------------
 
 --
@@ -110,14 +101,16 @@ CREATE TABLE IF NOT EXISTS `companies` (
 DROP TABLE IF EXISTS `people`;
 CREATE TABLE IF NOT EXISTS `people` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `candidate_id` varchar(255) NOT NULL DEFAULT '0',
   `firstName` varchar(255) NOT NULL,
   `company_name` varchar(255) DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
   `applying` tinyint(1) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

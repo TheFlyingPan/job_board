@@ -21,7 +21,7 @@ $(document).ready(function () {
             type: "POST",
             data: data,
             success: function (msg) {
-                console.log(msg)
+                window.location.href = "./login.php";
             },
             error: function (xhr, status, error) {
                 console.log(JSON.parse(xhr.responseText))
