@@ -4,17 +4,20 @@ module.exports = function (app, con, bcrypt, faker) {
         var email = req.body.email;
         var pass = req.body.password;
 
-        var applying = req.body.applying == true ? 1 : 0
+        var applying = req.body.applying ? 1 : 0
         var company_id = faker.random.number();
 
         const saltRounds = 10;
         const myPlaintextPassword = pass;
 
-        var sqlreq = "SELECT * FROM people WHERE email='" + email + "'";
+        var sqlreq = "SELECT * FROM people WHERE email='" + email + "' AND candidate_id!=0";
         con.query(sqlreq, function (err, result) {
             if (err) throw err;
-            if (result == []) {
-                res.send({ "message": "Email already in use" });
+            if (JSON.stringify(result) != '[]') {
+                console.log(result)
+                res.setHeader("Access-Control-Allow-Origin", "*")
+                res.statusCode = 401;
+                res.send(JSON.stringify({ "message": "Email already in use" }));
             } else {
                 bcrypt.genSalt(saltRounds, function (err, salt) {
                     bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
@@ -35,5 +38,25 @@ module.exports = function (app, con, bcrypt, faker) {
     })
     app.get('/test', (req, res) => {
         console.log(req.session)
+    })
+    app.post('/login', (req, res) => {
+        var email = req.body.email;
+        var pass = req.body.password;
+
+        var sql = "SELECT * FROM people WHERE email='" + email + "'";
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(result)
+            bcrypt.compare(pass, user.password, function(err, res) {
+                if (res) {
+                  // Send JWT
+                  res.setHeader("Access-Control-Allow-Origin", "*")
+                  res.send(JSON.stringify({ "message": "Login successful", "id": "dkjsk" }));
+                } else {
+                  // response is OutgoingMessage object that server response http request
+                  return response.json({success: false, message: 'passwords do not match'});
+                }
+              });
+        })
     })
 }

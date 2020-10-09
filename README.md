@@ -1,6 +1,6 @@
 # Job Board
 
-Instant Score is a chrome extension designed for musician to make the task of finding public domain music sheet easier 
+
 
 ## Installation
 
