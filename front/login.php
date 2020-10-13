@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./js/login.js"></script>
+    <script src="./js/nav-login.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -30,19 +31,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
+            </ul>
         </div>
     </nav>
     <main>
         <form class="ml-4 mr-4 mt-3">
             <fieldset>
-                <div class="form-group">
+                <div class="form-group" id="email-input-div">
                     <label for="email-input">Email address</label>
                     <input type="email" class="form-control" id="email-input" placeholder="Enter your email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="pass-input-div">
                     <label for="password-input">Password</label>
-                    <input type="text" class="form-control" id="password-input" placeholder="Enter your password">
+                    <input type="password" class="form-control" id="password-input" placeholder="Enter your password">
                 </div>
                 <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
             </fieldset>

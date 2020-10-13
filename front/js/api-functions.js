@@ -9,12 +9,11 @@ function displayAds(data, uid) {
         var title = $("<h5 class=\"card-title\"></h5>").text(element.title);
         var shortDesc = $("<p class=\"card-text lead\"></p>").text(element.content.slice(0, 50) + "...");
         var collapse = $("<div class=\"collapse\" id=\"collapseExample" + index + "\"></div>").append($("<div class=\"card card-body mb-2\" id=\"ladescription\"></div>").text(element.content));
-        if (uid == 0) {
-            var button = $("<a class=\"btn btn-secondary\" data-toggle=\"collapse\" href=\"#collapseExample" + index + "\" role=\"button\" aria-expanded=\"false\" aria-controls=\"collapseExample\">Learn more</a><form action=\"./form.php\" method=\"post\" class=\"mt-2\"><input type=\"hidden\" value=\"" + element.id + "\" name=\"ad_id\"><input type=\"hidden\" value=\"" + element.company_name + "\" name=\"company\"><input type=\"hidden\" value=\"" + element.title + "\" name=\"title\"><button type=\"submit\" class=\"btn btn-secondary\">Apply</button></form>")
+        if (uid != 0 && uid != "null") {
+            var button = $("<a class=\"btn btn-secondary\" data-toggle=\"collapse\" href=\"#collapseExample" + index + "\" role=\"button\" aria-expanded=\"false\" aria-controls=\"collapseExample\">Learn more</a><form action=\"./logged-form.php?uid=" + uid + "\" method=\"post\" class=\"mt-2\"><input type=\"hidden\" value=\"" + element.id + "\" name=\"ad_id\"><input type=\"hidden\" value=\"" + element.company_name + "\" name=\"company\"><input type=\"hidden\" value=\"" + element.title + "\" name=\"title\"><input type=\"hidden\" value=\"" + uid + "\" name=\"uid\"><button type=\"submit\" class=\"btn btn-secondary\">Apply</button></form>")
         } else {
-            var button = $("<a class=\"btn btn-secondary\" data-toggle=\"collapse\" href=\"#collapseExample" + index + "\" role=\"button\" aria-expanded=\"false\" aria-controls=\"collapseExample\">Learn more</a><form action=\"./logged-form.php\" method=\"post\" class=\"mt-2\"><input type=\"hidden\" value=\"" + element.id + "\" name=\"ad_id\"><input type=\"hidden\" value=\"" + element.company_name + "\" name=\"company\"><input type=\"hidden\" value=\"" + element.title + "\" name=\"title\"><input type=\"hidden\" value=\"" + uid + "\" name=\"uid\"><button type=\"submit\" class=\"btn btn-secondary\">Apply</button></form>")
+            var button = $("<a class=\"btn btn-secondary\" data-toggle=\"collapse\" href=\"#collapseExample" + index + "\" role=\"button\" aria-expanded=\"false\" aria-controls=\"collapseExample\">Learn more</a><form action=\"./form.php\" method=\"post\" class=\"mt-2\"><input type=\"hidden\" value=\"" + element.id + "\" name=\"ad_id\"><input type=\"hidden\" value=\"" + element.company_name + "\" name=\"company\"><input type=\"hidden\" value=\"" + element.title + "\" name=\"title\"><button type=\"submit\" class=\"btn btn-secondary\">Apply</button></form>")
         }
-
         body = body.append(title, shortDesc, collapse, button);
         card = card.append(header, body);
         var deck = $("main #number" + ix);

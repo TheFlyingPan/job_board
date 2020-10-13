@@ -3,7 +3,7 @@ $(document).ready(function () {
         console.log("bonsoir")
         $('body nav').after("<div class=\"alert alert-dismissible alert-success mt-1 ml-4 mr-4\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>It's in their hands now!</strong> You successfully applied to an ad</div>")
     }
-    if ($_GET('id') != "" && $_GET('id') != "null") {
+    if ($_GET('id') != "" && $_GET('id') != "null" && $_GET('id') != null) {
         console.log("bonsoir")
         document.cookie = "uid=" + $_GET('id') + "; path=/; expires=5000000";
     }
@@ -14,6 +14,10 @@ $(document).ready(function () {
             displayAds(JSON.parse(data), getCookie('uid') != "" ? getCookie('uid') : 0);
         }
     })
+    if ($_GET("logout") == "true") {
+        document.cookie = "uid=null; path=/; expires=5000000";
+        window.location.href = "./index.php";
+    }
 })
 
 function $_GET(param) {

@@ -95,6 +95,7 @@ app.post('/createApp/', (req, res) => {
         res.setHeader("Access-Control-Allow-Origin", "*")
         res.send(JSON.stringify({"message": "Application created"}));
     })
+    console.log(req.body)
 })
 
 //People

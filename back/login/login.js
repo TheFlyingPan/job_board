@@ -10,11 +10,11 @@ module.exports = function (app, con, bcrypt, faker) {
         const saltRounds = 10;
         const myPlaintextPassword = pass;
 
-        var sqlreq = "SELECT * FROM people WHERE email='" + email + "' AND candidate_id!=0";
+        var sqlreq = "SELECT * FROM people WHERE email='" + email + "' AND candidate_id != '0'";
         con.query(sqlreq, function (err, result) {
             if (err) throw err;
+            console.log(result)
             if (JSON.stringify(result) != '[]') {
-                console.log(result)
                 res.setHeader("Access-Control-Allow-Origin", "*")
                 res.statusCode = 401;
                 res.send(JSON.stringify({ "message": "Email already in use" }));
@@ -27,7 +27,6 @@ module.exports = function (app, con, bcrypt, faker) {
                             if (err) throw err;
                             var uuid = faker.random.uuid();
                             req.session.uuid = uuid
-                            console.log(req.session)
                             res.setHeader("Access-Control-Allow-Origin", "*")
                             res.send(JSON.stringify({ "message": "Account succefully created", "session_uuid": uuid }));
                         })
@@ -42,25 +41,29 @@ module.exports = function (app, con, bcrypt, faker) {
     app.post('/login', (req, res) => {
         var email = req.body.email;
         var pass = req.body.password;
-
         var sql = "SELECT * FROM people WHERE email='" + email + "'";
+
         con.query(sql, function (err, result) {
             if (err) throw err;
-            console.log(result)
-            bcrypt.compare(pass, result[0].password, function(err, isMatch) {
-                console.log(err)
-                console.log(isMatch)
-                if (isMatch) {
-                  // Send JWT
-                  res.setHeader("Access-Control-Allow-Origin", "*")
-                  res.send(JSON.stringify({ "message": "Login successful", "id": result[0].candidate_id }));
-                } else {
-                  // response is OutgoingMessage object that server response http request
-                  res.setHeader("Access-Control-Allow-Origin", "*")
-                  res.statusCode = 401
-                  res.send(JSON.stringify({ "message": "Nul", "id": "dkjsk" }));
-                }
-              });
+            if (JSON.stringify(result) != "[]") {
+                bcrypt.compare(pass, result[0].password, function (err, isMatch) {
+                    console.log(err)
+                    if (isMatch) {
+                        // Send JWT
+                        res.setHeader("Access-Control-Allow-Origin", "*")
+                        res.send(JSON.stringify({ "message": "Login successful", "id": result[0].candidate_id }));
+                    } else {
+                        // response is OutgoingMessage object that server response http request
+                        res.setHeader("Access-Control-Allow-Origin", "*")
+                        res.statusCode = 401
+                        res.send(JSON.stringify({ "message": "Wrong password" }));
+                    }
+                });
+            } else {
+                res.setHeader("Access-Control-Allow-Origin", "*")
+                res.statusCode = 401
+                res.send(JSON.stringify({ "message": "Account unknow, please register" }));
+            }
         })
     })
 }

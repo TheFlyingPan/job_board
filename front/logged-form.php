@@ -10,6 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/logged-form.js"></script>
+    <script src="./js/nav-login.js"></script>
 </head>
 
 <body>
@@ -41,12 +42,12 @@
                 </li>
         </div>
     </nav>
-    <h2 class="ml-3 mt-4 mb-3">Application to <?= $title ?> at <?= $company ?></h1>
+    <h2 class="ml-3 mt-4 mb-3">Application to <?= $title ?> at <?= $company ?></h2>
         <div class="w-60">
             <form class="mr-3 ml-3 p-3">
                 <div class="form-group">
                     <label for="message">Enter a message for the recruiter</label>
-                    <textarea class="form-control" id="message" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 104px;" placeholder="Enter your message here..." required></textarea>
+                    <textarea class="form-control" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 104px;" placeholder="Enter your message here..." required id="message"></textarea>
                 </div>
                 <input type="hidden" value="<?= $id ?>" id="ad_id">
                 <button type="submit" class="btn btn-primary" id="submit-btn">Apply</button>

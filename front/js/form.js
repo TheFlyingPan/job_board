@@ -14,6 +14,7 @@ $(document).ready(function () {
             type: "POST",
             data: data,
             success: function () {
+                console.log('bonsoir')
                 window.location.href = "./index.php?apply=true";
             },
         })

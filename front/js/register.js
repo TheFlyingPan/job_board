@@ -24,7 +24,12 @@ $(document).ready(function () {
                 window.location.href = "./login.php";
             },
             error: function (xhr, status, error) {
-                console.log(JSON.parse(xhr.responseText))
+                msg = JSON.parse(xhr.responseText)
+                if (msg.message == "Email already in use") {
+                    $("#email-input-div input").addClass("is-invalid");
+                    $("#email-input-div input").val("");
+                    $("#email-input-div").append('<div class="invalid-feedback">Sorry, email already in use. Please, try another one or login</div>')
+                }
             }
         })
         return false

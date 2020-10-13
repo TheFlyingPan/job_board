@@ -56,14 +56,14 @@
                     </label>
                 </div>
             </fieldset>
-            <div class="form-group">
+            <div class="form-group" id="email-input-div">
                 <label for="email-input">Email address</label>
-                <input type="email" class="form-control" id="email-input" placeholder="Enter your email">
+                <input type="email" class="form-control" id="email-input" placeholder="Enter your email" required>
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label for="password-input">Password</label>
-                <input type="text" class="form-control" id="password-input" placeholder="Enter your password">
+                <input type="text" class="form-control" id="password-input" placeholder="Enter your password" required>
             </div>
             <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
         </form>
