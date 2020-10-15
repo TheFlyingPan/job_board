@@ -24,7 +24,7 @@ var con = mysql.createConnection({
     password: "",
     database: "job_board",
     // si erreur de connection base de donnée décommenter cette ligne
-    port: "3307"
+    // port: "3307"
 });
 
 require('./routes')(app, con);
