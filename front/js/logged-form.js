@@ -15,7 +15,7 @@ $(document).ready(function () {
                 "candidate_first": data[0].firstName,
                 "candidate_last": data[0].lastName,
                 "email": data[0].email,
-                "phone": data[0].phone,
+                "phone": $("input#phone").val(),
                 "message": $("textarea#message").val(),
                 "candidate_id": getCookie('uid'),
                 "ad_id": $("input#ad_id").val(),

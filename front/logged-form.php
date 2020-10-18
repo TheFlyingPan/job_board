@@ -32,27 +32,26 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Company</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="./index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
         </div>
     </nav>
     <h2 class="ml-3 mt-4 mb-3">Application to <?= $title ?> at <?= $company ?></h2>
-        <div class="w-60">
-            <form class="mr-3 ml-3 p-3">
-                <div class="form-group">
-                    <label for="message">Enter a message for the recruiter</label>
-                    <textarea class="form-control" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 104px;" placeholder="Enter your message here..." required id="message"></textarea>
-                </div>
-                <input type="hidden" value="<?= $id ?>" id="ad_id">
-                <button type="submit" class="btn btn-primary" id="submit-btn">Apply</button>
-            </form>
-        </div>
+    <div class="w-60">
+        <form class="mr-3 ml-3 p-3">
+            <div class="form-group">
+                <label for="phone">Email address</label>
+                <input type="text" class="form-control" id="phone" placeholder="Enter optional phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Enter a message for the recruiter</label>
+                <textarea class="form-control" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 104px;" placeholder="Enter your message here..." required id="message"></textarea>
+            </div>
+            <input type="hidden" value="<?= $id ?>" id="ad_id">
+            <button type="submit" class="btn btn-primary" id="submit-btn">Apply</button>
+        </form>
+    </div>
 </body>
 
 </html>
