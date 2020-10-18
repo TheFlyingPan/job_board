@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 15, 2020 at 01:28 PM
+-- Generation Time: Oct 18, 2020 at 03:01 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
 
@@ -87,15 +87,7 @@ CREATE TABLE IF NOT EXISTS `application` (
   `contact_phone` varchar(255) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `application`
---
-
-INSERT INTO `application` (`id`, `candidate_id`, `candidate_last`, `candidate_first`, `advertisement_id`, `contact_email`, `contact_phone`, `message`) VALUES
-(21, '0', 'Poirier', 'Aurélien', 37, 'aurepoir00@gmail.com', '0679730610', 'bnonsoiur je suisuis '),
-(22, '54df4a76-a017-4253-9515-91c4163ee364', 'Poirier', 'Aurélien', 38, 'aurepoir00@gmail.com', 'undefined', 'ghghghgh');
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -131,14 +123,14 @@ CREATE TABLE IF NOT EXISTS `people` (
   `email` varchar(255) NOT NULL,
   `password` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `people`
 --
 
 INSERT INTO `people` (`id`, `candidate_id`, `firstName`, `company_name`, `company_id`, `applying`, `lastName`, `email`, `password`) VALUES
-(14, '54df4a76-a017-4253-9515-91c4163ee364', 'Aurélien', 'undefined', 38955, 1, 'Poirier', 'aurepoir00@gmail.com', '$2b$10$9nYee9O22Tq/Vr4EUVfx6.wNEeAaQP2JdQtG3Bn3vyAmQyxu.KERG');
+(15, '400e0310-d5b4-4b21-8071-4831054c87c9', 'admin', 'undefined', 821, 1, 'admin', 'sdf@sdf.sdf', '$2b$10$91CYI767bA4Gwm0JWUhgD.V6nMyhmEK4ewwaRm5.ZCVRkSFjHE7eO');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
